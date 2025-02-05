@@ -1,0 +1,21 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:NikeClone"
+             x:Class="NikeClone.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Light Theme Colors -->
+            <Color x:Key="PrimaryColor" AppThemeBinding.Light="White" AppThemeBinding.Dark="Black"/>
+            <Color x:Key="TextColor" AppThemeBinding.Light="Black" AppThemeBinding.Dark="White"/>
+
+            <!-- Styles -->
+            <Style TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
