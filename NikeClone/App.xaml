@@ -5,6 +5,7 @@
              x:Class="NikeClone.App">
     <Application.Resources>
         <ResourceDictionary>
+<<<<<<< HEAD
             <!-- Light Theme Colors -->
             <Color x:Key="PrimaryColor" AppThemeBinding.Light="White" AppThemeBinding.Dark="Black"/>
             <Color x:Key="TextColor" AppThemeBinding.Light="Black" AppThemeBinding.Dark="White"/>
@@ -16,6 +17,12 @@
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource TextColor}"/>
             </Style>
+=======
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+>>>>>>> aa4c4f0aa321409aad56c47993a58b4912cef798
         </ResourceDictionary>
     </Application.Resources>
 </Application>
