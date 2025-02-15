@@ -2,42 +2,41 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NikeClone.MVVM.Views.HomePage"
-             Title="HomePage">
-    <Grid>
+             Title="HomePage" BackgroundColor="White">
+    <Grid Margin="0,20,0,0">
         <ScrollView>
             <StackLayout>
                 <Border StrokeShape="RoundRectangle 20" WidthRequest="60" HorizontalOptions="Start" Margin="20">
                     <ImageButton Clicked="mode_Clicked" x:Name="mode" Source="nike.png" HeightRequest="40" WidthRequest="40 "/>
                 </Border>
                 <VerticalStackLayout Spacing="20" Padding="10">
-                    <Label x:Name="welcomemsg" Text="{Binding CurrentUser.Name, StringFormat='Hello{0}'}" FontAttributes="Bold" FontSize="30" FontFamily="" Margin="20" />
-                    <Label Text="Top Picks for You!" FontFamily="" FontSize="20" HorizontalOptions="Start" Margin="12,30,0,0"/>
+                    <Label x:Name="welcomemsg" Text="{Binding CurrentUser.Name, StringFormat='Hello {0}'}" FontAttributes="Bold" FontSize="30" FontFamily="" Margin="20" TextColor="Black"/>
+                    <Label Text="Top Picks for You!" FontFamily="" FontSize="20" HorizontalOptions="Start" Margin="12,30,0,0" TextColor="Black"/>
                     <Border></Border>
                     <CollectionView
-                        Margin="0,10,0,20" ItemsSource="{Binding BestSellerData}">
+                        Margin="0,10,0,20" ItemsSource="{Binding BestSellers}">
                         <CollectionView.ItemsLayout>
                             <GridItemsLayout 
-                        Orientation="Horizontal" 
-                        Span="1" 
-                        HorizontalItemSpacing="7"
-                        VerticalItemSpacing="7"/>
+                                Orientation="Horizontal" 
+                                Span="1" 
+                                HorizontalItemSpacing="7"
+                                VerticalItemSpacing="7"/>
                         </CollectionView.ItemsLayout>
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Grid>
-                                    <ImageButton Clicked="Product_Clicked" x:Name="Product"  Source="{Binding ImageURL[0]}" HeightRequest="207" WidthRequest="150" />
-                                    <ImageButton Clicked="Like_Clicked" x:Name="LikeButton" Source="heart.png" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="End" Margin="0,15,5,0" WidthRequest="30"/>
+                                <Grid RowDefinitions="*, 70">
+                                    <ImageButton Clicked="Product_Clicked" x:Name="Product"  Source="{Binding ImageURL[0]}" HeightRequest="207" WidthRequest="150" Grid.Row="0" />
+                                    <ImageButton Clicked="LikeButton_Clicked" x:Name="LikeButton" Source="heart.png" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="End" Margin="0,15,5,0" WidthRequest="30" Grid.Row="0"/>
                                     <Label Text="{Binding Name}"
-                                   
-                                   TextColor="Black"
-                                   FontFamily=""
-                                   Margin="5,5,5,15"  VerticalOptions="End" HorizontalOptions="Start"/>
+                                           TextColor="Black"
+                                           FontAttributes="Bold"
+                                           FontFamily=""
+                                           Margin="5,0,5,15"  VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="1"/>
 
-                                    <Label Text="{Binding Price}"
-                                 
-                                   TextColor="Black"
-                                   FontFamily=""
-                                   Margin="5,5,5,15" VerticalOptions="End" HorizontalOptions="End"/>
+                                    <Label Text="{Binding Price, StringFormat='MRP: ₹{0}'}"
+                                           TextColor="DarkGrey"
+                                           FontFamily=""
+                                           Margin="5,15,5,25" VerticalOptions="End" HorizontalOptions="Start" Grid.Row="1"/>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
@@ -51,8 +50,8 @@
                                     <Border.Background>
                                         <LinearGradientBrush EndPoint="1,0">
                                             <GradientStop Color="#b0714d" Offset="0.1"/>
+                                            <GradientStop Color="#ffcc00" Offset="0.5"/>
                                             <GradientStop Color="#ffffff" Offset="1.0"/>
-
                                         </LinearGradientBrush>
                                     </Border.Background>
                                     <Grid Padding="20">

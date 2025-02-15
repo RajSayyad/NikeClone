@@ -21,4 +21,14 @@ public partial class HomePage : ContentPage
             Application.Current.UserAppTheme = AppTheme.Dark;
         }
     }
+
+    private void Product_Clicked(object sender, EventArgs e)
+    {
+
+    }
+
+    private void LikeButton_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }
