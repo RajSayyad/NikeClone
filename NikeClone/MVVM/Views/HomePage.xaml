@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NikeClone.MVVM.Views.HomePage"
-             Title="HomePage" BackgroundColor="White">
+             Title="Home" 
+             BackgroundColor="White">
     <Grid Margin="0,20,0,0">
         <ScrollView>
             <StackLayout>
@@ -10,7 +11,7 @@
                     <ImageButton Clicked="mode_Clicked" x:Name="mode" Source="nike.png" HeightRequest="40" WidthRequest="40 "/>
                 </Border>
                 <VerticalStackLayout Spacing="20" Padding="10">
-                    <Label x:Name="welcomemsg" Text="{Binding CurrentUser.Name, StringFormat='Hello {0}'}" FontAttributes="Bold" FontSize="30" FontFamily="" Margin="20" TextColor="Black"/>
+                    <Label x:Name="welcomemsg" Text="{Binding Global.CurrentUser.Name, StringFormat='Hello {0}'}" FontAttributes="Bold" FontSize="30" FontFamily="" Margin="20" TextColor="Black"/>
                     <Label Text="Top Picks for You!" FontFamily="" FontSize="20" HorizontalOptions="Start" Margin="12,30,0,0" TextColor="Black"/>
                     <Border></Border>
                     <CollectionView
@@ -33,7 +34,7 @@
                                            FontFamily=""
                                            Margin="5,0,5,15"  VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="1"/>
 
-                                    <Label Text="{Binding Price, StringFormat='MRP: ₹{0}'}"
+                                    <Label Text="{Binding Price, StringFormat='MRP: ₹ {0}'}"
                                            TextColor="DarkGrey"
                                            FontFamily=""
                                            Margin="5,15,5,25" VerticalOptions="End" HorizontalOptions="Start" Grid.Row="1"/>
@@ -48,10 +49,9 @@
                             <DataTemplate>
                                 <Border>
                                     <Border.Background>
-                                        <LinearGradientBrush EndPoint="1,0">
-                                            <GradientStop Color="#b0714d" Offset="0.1"/>
-                                            <GradientStop Color="#ffcc00" Offset="0.5"/>
-                                            <GradientStop Color="#ffffff" Offset="1.0"/>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#9B5E2B" Offset="0.0"/>
+                                            <GradientStop Color="#E4A76D" Offset="1.0"/>
                                         </LinearGradientBrush>
                                     </Border.Background>
                                     <Grid Padding="20">
@@ -67,6 +67,87 @@
 
                                     </Grid>
                                 </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Label Text="AIR" FontFamily="" FontSize="Large" HorizontalOptions="Start" Margin="5" TextColor="Black"/>
+                    <CollectionView ItemsSource="{Binding NikeAir}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout 
+                        Orientation="Horizontal" 
+                        ItemSpacing="0"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding ImageURL[0]}" HeightRequest="500"/>
+                                    <Border Stroke="White" StrokeThickness="1" HeightRequest="40" WidthRequest="90" BackgroundColor="Gray" VerticalOptions="Start" HorizontalOptions="Start" Margin="30">
+                                        <BoxView BackgroundColor="Grey" HeightRequest="45" WidthRequest="95" Opacity="10" VerticalOptions="Start" HorizontalOptions="Start" Margin="30"/>
+                                    </Border>
+                                    <Border Stroke="White" StrokeThickness="0.5" HeightRequest="40" WidthRequest="90" BackgroundColor="Black" VerticalOptions="Start" HorizontalOptions="Start" Margin="35">
+                                        <Label Text="Nike Air" FontSize="20" FontAttributes="Italic" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" FontFamily=""/>
+                                    </Border>
+                                    <Border Stroke="White" StrokeThickness="1" HeightRequest="65" WidthRequest="150" BackgroundColor="Gray" VerticalOptions="End" HorizontalOptions="End" Margin="30">
+                                        <BoxView BackgroundColor="Grey" HeightRequest="45" WidthRequest="95" Opacity="10" VerticalOptions="Start" HorizontalOptions="Start" Margin="30"/>
+                                    </Border>
+                                    <Border Stroke="White" StrokeThickness="0.5" HeightRequest="65" WidthRequest="150" BackgroundColor="Black" VerticalOptions="End" HorizontalOptions="End" Margin="35">
+                                        <Button Text="Shop Nike Air" FontFamily="" BackgroundColor="Black" FontSize="20" TextColor="White"/>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Label Text="JORDANS" FontFamily="" FontSize="Large" HorizontalOptions="Start" Margin="5" TextColor="Black"/>
+                    <CollectionView ItemsSource="{Binding NikeJordan}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout 
+                            Orientation="Horizontal" 
+                            ItemSpacing="0"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding ImageURL[0]}" HeightRequest="500"/>
+                                    <Border Stroke="Black" StrokeThickness="1" HeightRequest="50" WidthRequest="120" BackgroundColor="DarkOrange" VerticalOptions="Start" HorizontalOptions="Start" Margin="30">
+                                        <BoxView BackgroundColor="Red" HeightRequest="45" WidthRequest="95" Opacity="10" VerticalOptions="Start" HorizontalOptions="Start" Margin="30"/>
+                                    </Border>
+                                    <Border Stroke="DarkGray" StrokeThickness="0.5" HeightRequest="50" WidthRequest="120" BackgroundColor="DarkRed" VerticalOptions="Start" HorizontalOptions="Start" Margin="35">
+                                        <Label Text="Air Jordans" FontSize="18" FontAttributes="Italic" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" FontFamily=""/>
+                                    </Border>
+                                    <Border Stroke="Black" StrokeThickness="1" HeightRequest="65" WidthRequest="150" BackgroundColor="DarkOrange" VerticalOptions="End" HorizontalOptions="End" Margin="30">
+                                        <BoxView BackgroundColor="DarkOrange" HeightRequest="45" WidthRequest="95" Opacity="10" VerticalOptions="Start" HorizontalOptions="Start" Margin="30"/>
+                                    </Border>
+                                    <Border Stroke="DarkGray" StrokeThickness="0.5" HeightRequest="65" WidthRequest="150" BackgroundColor="DarkRed" VerticalOptions="End" HorizontalOptions="End" Margin="35">
+                                        <Button Text="Shop Jordans" FontFamily="Roboto" BackgroundColor="DarkRed" FontSize="20" TextColor="White"/>
+                                    </Border>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    <Label Text="Adidas" FontFamily="" FontSize="Large" Margin="5" TextColor="Black"/>
+                    <CollectionView ItemsSource="{Binding Adidas}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout 
+                            Orientation="Horizontal" 
+                            ItemSpacing="7"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Image Source="{Binding ImageURL[0]}" HeightRequest="500"/>
+                                    <Border Stroke="White" StrokeThickness="1" HeightRequest="40" WidthRequest="90" BackgroundColor="Gray" VerticalOptions="Start" HorizontalOptions="Start" Margin="30">
+                                        <BoxView BackgroundColor="Grey" HeightRequest="45" WidthRequest="95" Opacity="10" VerticalOptions="Start" HorizontalOptions="Start" Margin="30"/>
+                                    </Border>
+                                    <Border Stroke="White" StrokeThickness="0.5" HeightRequest="40" WidthRequest="90" BackgroundColor="Black" VerticalOptions="Start" HorizontalOptions="Start" Margin="35">
+                                        <Label Text="Adidas" FontSize="20" FontAttributes="Italic" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" FontFamily=""/>
+                                    </Border>
+                                    <Border Stroke="White" StrokeThickness="1" HeightRequest="65" WidthRequest="150" BackgroundColor="Gray" VerticalOptions="End" HorizontalOptions="End" Margin="30">
+                                        <BoxView BackgroundColor="Grey" HeightRequest="45" WidthRequest="95" Opacity="10" VerticalOptions="Start" HorizontalOptions="Start" Margin="30"/>
+                                    </Border>
+                                    <Border Stroke="White" StrokeThickness="0.5" HeightRequest="65" WidthRequest="150" BackgroundColor="Black" VerticalOptions="End" HorizontalOptions="End" Margin="35">
+                                        <Button Text="Shop Adidas" FontFamily="" BackgroundColor="Black" FontSize="20" TextColor="White"/>
+                                    </Border>
+                                </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>

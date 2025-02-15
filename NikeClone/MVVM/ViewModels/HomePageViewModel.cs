@@ -10,10 +10,9 @@ namespace NikeClone.MVVM.ViewModels
 {
     public class HomePageViewModel
     {
+        public GlobalViewModel Global { get; set; }
         public ProductViewModel PVMobj {  get; set; } = new ProductViewModel();
-        public UserViewModel UVMobj { get; set; } = new UserViewModel();
 
-        public User CurrentUser { get; set; }
         public List<Product> BestSellers { get; set; } = new List<Product>();
 
         public List<Product> CategoryData { get; set; }
@@ -25,11 +24,11 @@ namespace NikeClone.MVVM.ViewModels
         public List<Product> Adidas { get; set; }
 
 
-        public HomePageViewModel() { 
+        public HomePageViewModel() {
 
-            BestSellers = PVMobj.ProductList.Where(p=> p.IsBestseller==true).ToList();
+            Global = new GlobalViewModel();
 
-            CurrentUser = new User() { Name = "Raj" };
+            BestSellers = PVMobj.ProductList.Where(p=> p.IsBestseller==true).ToList(); 
 
             CategoryData = new List<Product>() {
                 new Product(){Name = "HighTop", ImageURL=["cat1.png"]},
@@ -54,5 +53,5 @@ namespace NikeClone.MVVM.ViewModels
 
 
     }
-}
+
 }

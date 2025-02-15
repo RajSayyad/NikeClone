@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NikeClone.MVVM.ViewModels
+namespace NikeClone.TempDBS
 {
 
     public class UserViewModel

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NikeClone.MVVM.Views.ProductPage"
+             Title="{Binding PageTitle}" BackgroundColor="White">
+
+    <ScrollView x:Name="productScrollView">
+        <StackLayout>
+            <Grid RowDefinitions="*" Margin="0,10,0,0">
+                <CarouselView ItemsSource="{Binding prod.ImageURL}" IndicatorView="indicator">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Image Source="{Binding .}" Aspect="AspectFill" VerticalOptions="FillAndExpand"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+                <IndicatorView x:Name="indicator"
+                        IndicatorColor="DarkGray"
+                        SelectedIndicatorColor="Black"
+                        HorizontalOptions="Center" VerticalOptions="End" Margin="0,0,0,10"/>
+
+            </Grid>
+            <VerticalStackLayout Spacing="0" Padding="10" Margin="12">
+                <CollectionView
+                    Margin="0,0,0,20" ItemsSource="{Binding relproduct}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout 
+                        Orientation="Horizontal" 
+                        Span="1" 
+                        HorizontalItemSpacing="5"
+                        VerticalItemSpacing="7"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border StrokeThickness="0.1">
+                                <ImageButton Clicked="RelProduct_Clicked" x:Name="RelProduct"  Source="{Binding ImageURL[0]}" HeightRequest="120" WidthRequest="100" />
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Label Text="{Binding prod.Name}" Margin="0,20,0,3" FontAttributes="None" FontFamily="" FontSize="35" TextColor="Black"/>
+                <Label Text="{Binding prod.Description, StringFormat='{0} Shoes'}" FontFamily="" FontSize="20" TextColor="Black" Margin="0,0,0,0"/>
+                <Label Text="{Binding prod.Price, StringFormat='MRP:   ₹ {0}'}" Margin="0,10,0,0" FontFamily="" FontSize="15" FontAttributes="None" TextColor="Black"/>
+                <Label Text="Inclusive of all taxes" FontSize="Small" FontFamily="" TextColor="Gray"/>
+                <Label Text="(also Includes all applicable duties)" FontSize="Small" FontFamily="" TextColor="Grey"/>
+                <Grid>
+                    <Picker x:Name="picker"
+                        Title="Select Size" VerticalOptions="Center" HorizontalOptions="Center" Margin="0,30,0,20" HeightRequest="50" WidthRequest="200" FontFamily="" FontSize="Medium">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>UK9</x:String>
+                            <x:String>UK6</x:String>
+                            <x:String>UK7</x:String>
+                            <x:String>UK8</x:String>
+                            <x:String>UK4</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Border HeightRequest="50" WidthRequest="300" BackgroundColor="Black" StrokeShape="RoundRectangle 25" Margin="0,20,0,0">
+                </Border>
+                    <Label Text="Select Size" VerticalOptions="Center" HorizontalOptions="Center" TextColor="White" FontFamily="" FontSize="Medium" Margin="0,20,0,0"/>
+                </Grid>
+                <Grid>
+                    <Button Clicked="favorite_Clicked" x:Name="favorite" Text="Favourite" WidthRequest="270" BackgroundColor="White" TextColor="Black" BorderColor="Black" BorderWidth="2" />
+                    <Image x:Name="likebtn" Source="heart.png" HeightRequest="20" HorizontalOptions="End" Margin="0,0,100,1"/>
+                </Grid>
+                <Button Clicked="addtobag_Clicked" x:Name="addtobag" Text="Add to Bag" WidthRequest="300" BackgroundColor="Black" TextColor="White" BorderColor="Black" BorderWidth="2" FontSize="Medium" Margin="0,20,0,0" FontFamily="" BindingContext="{Binding prod}"/>
+                <Label Text="Experience the perfect blend of comfort, performance, and style with the Nike Air Zoom Pegasus 40. Designed for runners of all levels, this latest edition of the Pegasus series offers enhanced cushioning, a breathable mesh upper, and a responsive Zoom Air unit for a smooth and energized ride. Whether you're hitting the track, pavement, or treadmill, the Pegasus 40 ensures optimal support and flexibility, making every run feel effortless. Available in a range of dynamic colors and sleek designs, this shoe is a must-have for athletes and sneaker enthusiasts alike. Upgrade your running game with Nike’s trusted innovation today!"
+                       TextColor="Gray" FontSize="Small"
+                       FontFamily="" Margin="5,30,5,5"/>
+
+                <Image Source="jordan.jpg" Aspect="AspectFill" VerticalOptions="FillAndExpand"  Margin="0,20,0,0"/>
+
+                <Label Text="Michael Jordan's collaboration with Nike revolutionized the world of sportswear and footwear, creating one of the most successful and iconic partnerships in history. In 1984, Nike signed Jordan, who was then a rising star in the NBA, to create a line of basketball shoes tailored to his style and performance needs. This collaboration led to the birth of the Air Jordan brand, which debuted with the Air Jordan 1 in 1985. The sneaker’s bold design, combined with Jordan's incredible skill on the court, quickly made it a cultural phenomenon. Over the years, the partnership has evolved, with each new Air Jordan release becoming a highly anticipated event. Nike's innovative approach, coupled with Jordan's legendary influence, has not only shaped the basketball shoe industry but also had a lasting impact on fashion, streetwear, and pop culture worldwide. Today, the Air Jordan line continues to be a symbol of excellence, style, and performance, embodying the enduring legacy of Michael Jordan and his collaboration with Nike."
+                        TextColor="Gray" FontSize="Small"
+                        FontFamily="" Margin="5,30,5,5"/>
+
+                <Label Text="You May Also Like! " FontFamily="" FontSize="20" HorizontalOptions="Start" Margin="12,30,0,0" TextColor="Black"/>
+
+                
+            </VerticalStackLayout>
+            <CollectionView
+     Margin="0,10,0,20" ItemsSource="{Binding relproduct}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout 
+                Orientation="Horizontal" 
+                Span="1" 
+                HorizontalItemSpacing="7"
+                VerticalItemSpacing="7"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="*, 100" Margin="10">
+                            <Border Stroke="Grey" StrokeThickness="0.2" StrokeShape="RoundRectangle 10" >
+                                <ImageButton Clicked="RelProduct1_Clicked" x:Name="RelProduct1"  Source="{Binding ImageURL[0]}" HeightRequest="220" WidthRequest="175" Grid.Row="0" />
+                            </Border>
+                            <Label Text="{Binding Name}"
+                       TextColor="Black"
+                       FontSize="15"
+                       FontFamily=""
+                       Margin="5,0,10,15" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="1"/>
+
+                            <Label Text="{Binding Description}"                 
+                        TextColor="Grey"
+                        FontFamily=""
+                        FontSize="12"
+                        Margin="5,24,5,15" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="1"/>
+                            <Label Text="{Binding Price, StringFormat='MRP: ₹ {0}'}"                 
+                        TextColor="Black"
+                        FontFamily=""
+                        FontSize="12"
+                        Margin="5,20,5,30" VerticalOptions="End" HorizontalOptions="Start" Grid.Row="1"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
