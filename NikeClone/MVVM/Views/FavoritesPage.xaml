@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NikeClone.MVVM.Views.FavoritesPage"
+             Title="FavoritesPage" BackgroundColor="White">
+    <ScrollView>
+        <StackLayout>
+            <CollectionView ItemsSource="{Binding Favourites}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid RowDefinitions="*, 100" Margin="10">
+                            <Border Stroke="Grey" StrokeThickness="0.2" StrokeShape="RoundRectangle 10" >
+                                <ImageButton x:Name="RelProduct1"  Source="{Binding ImageURL[0]}" HeightRequest="220" WidthRequest="175" Grid.Row="0" />
+                            </Border>
+                            <Label Text="{Binding Name}"
+                       TextColor="Black"
+                       FontSize="15"
+                       FontFamily=""
+                       Margin="5,0,10,15" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="1"/>
+
+                            <Label Text="{Binding Description}"                 
+                    TextColor="Grey"
+                    FontFamily=""
+                    FontSize="12"
+                    Margin="5,24,5,15" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="1"/>
+                            <Label Text="{Binding Price, StringFormat='MRP: ₹ {0}'}"                 
+                    TextColor="Black"
+                    FontFamily=""
+                    FontSize="12"
+                    Margin="5,20,5,30" VerticalOptions="End" HorizontalOptions="Start" Grid.Row="1"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -27,7 +27,7 @@
                             <DataTemplate>
                                 <Grid RowDefinitions="*, 70">
                                     <ImageButton Clicked="Product_Clicked" x:Name="Product"  Source="{Binding ImageURL[0]}" HeightRequest="207" WidthRequest="150" Grid.Row="0" />
-                                    <ImageButton Clicked="LikeButton_Clicked" x:Name="LikeButton" Source="heart.png" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="End" Margin="0,15,5,0" WidthRequest="30" Grid.Row="0"/>
+                                    <ImageButton Source="{Binding LikeImageValue}" Command="{Binding LikeCommand}" HeightRequest="30" VerticalOptions="Start" HorizontalOptions="End" Margin="0,15,5,0" WidthRequest="30" Grid.Row="0"/>
                                     <Label Text="{Binding Name}"
                                            TextColor="Black"
                                            FontAttributes="Bold"

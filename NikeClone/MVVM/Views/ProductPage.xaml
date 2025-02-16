@@ -97,10 +97,10 @@
                                 <ImageButton Clicked="RelProduct1_Clicked" x:Name="RelProduct1"  Source="{Binding ImageURL[0]}" HeightRequest="220" WidthRequest="175" Grid.Row="0" />
                             </Border>
                             <Label Text="{Binding Name}"
-                       TextColor="Black"
-                       FontSize="15"
-                       FontFamily=""
-                       Margin="5,0,10,15" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="1"/>
+                           TextColor="Black"
+                           FontSize="15"
+                           FontFamily=""
+                           Margin="5,0,10,15" VerticalOptions="Start" HorizontalOptions="Start" Grid.Row="1"/>
 
                             <Label Text="{Binding Description}"                 
                         TextColor="Grey"

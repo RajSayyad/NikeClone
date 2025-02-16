@@ -11,11 +11,14 @@ namespace NikeClone.MVVM.ViewModels
     public class GlobalViewModel
     {
         public User CurrentUser { get; set; }
+        public List<Product> FavouriteProd { get; set; }
         public UserViewModel UVMobj { get; set; } = new UserViewModel();
 
         public GlobalViewModel() {
 
             CurrentUser = new User() { Name = "Raj" };
+
+            
 
         }
     }

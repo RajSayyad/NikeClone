@@ -12,7 +12,7 @@ namespace NikeClone.MVVM.ViewModels
 {
     public class ProductPageViewModel : INotifyPropertyChanged
     {
-        public ProductViewModel product { get; set; } = new ProductViewModel();
+        public ProductViewModel product { get; set; } 
         public UserViewModel user { get; set; } = new UserViewModel();
 
         private List<Product> _relproduct;
@@ -43,7 +43,7 @@ namespace NikeClone.MVVM.ViewModels
 
         public ProductPageViewModel(Product Item)
         {
-            product = new ProductViewModel();
+            product = ProductViewModel.Instance;
             relproduct = product.ProductList.Where(p => p.Category == Item.Category).ToList();
             prod = Item;
 

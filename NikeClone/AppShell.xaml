@@ -33,7 +33,7 @@
     <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent Title="Home" Route="HomePage" ContentTemplate="{DataTemplate local:MVVM.Views.HomePage}" Icon="home.png"/>
         <ShellContent Title="Shop" Route="SearchPage" ContentTemplate="{DataTemplate local:MVVM.Views.HomePage}" Icon="search.png"/>
-        <ShellContent Title="Favorite" Route="" ContentTemplate="{DataTemplate local:MVVM.Views.HomePage}" Icon="heart.png"/>
+        <ShellContent Title="Favorite" Route="" ContentTemplate="{DataTemplate local:MVVM.Views.FavoritesPage}" Icon="heart.png"/>
         <ShellContent Title="Cart" Route="Bag" ContentTemplate="{DataTemplate local:MVVM.Views.HomePage}" Icon="shoppingbag.png"/>
         <ShellContent Title="Settings" Route="RegistrationPage" ContentTemplate="{DataTemplate local:MVVM.Views.HomePage}" Icon="setting.png"/>
     </FlyoutItem>

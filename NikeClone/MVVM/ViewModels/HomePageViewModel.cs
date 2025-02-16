@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using NikeClone.MVVM.Models;
 using NikeClone.TempDBS;
 
 namespace NikeClone.MVVM.ViewModels
 {
-    public class HomePageViewModel
+    public class HomePageViewModel: BindableObject
     {
         public GlobalViewModel Global { get; set; }
-        public ProductViewModel PVMobj {  get; set; } = new ProductViewModel();
+        public ProductViewModel PVMobj { get; set; } 
 
         public List<Product> BestSellers { get; set; } = new List<Product>();
 
@@ -26,9 +30,22 @@ namespace NikeClone.MVVM.ViewModels
 
         public HomePageViewModel() {
 
+            PVMobj = ProductViewModel.Instance;
+
             Global = new GlobalViewModel();
 
-            BestSellers = PVMobj.ProductList.Where(p=> p.IsBestseller==true).ToList(); 
+            BestSellers = PVMobj.ProductList.Where(p=> p.IsBestseller==true).Select(p => new Product()
+            {
+                Id = p.Id,
+                Name = p.Name,
+                ImageURL = p.ImageURL,
+                Description = p.Description,
+                Category = p.Category,
+                Price = p.Price,
+                IsBestseller = p.IsBestseller,
+                LikeImageValue = "heart.png"  // Ensure default like state
+            })
+        .ToList();
 
             CategoryData = new List<Product>() {
                 new Product(){Name = "HighTop", ImageURL=["cat1.png"]},
@@ -49,6 +66,8 @@ namespace NikeClone.MVVM.ViewModels
                 new Product(){ImageURL=["adidas1.jpg"]},
                 new Product(){ImageURL=["adidas2.jpg"]}
             };
+
+
         }
 
 
